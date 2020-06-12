@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My first library</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <h2>Library</h2>
+    <input type="text" id="email">
+
+    <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>		
+    <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-messaging.js"></script>
+    <script src="library.js"></script>
+    <script>
+        var element = document.getElementById("email");
+        element.addEventListener("change",function(){
+            /* ORGANIC SUBS
+            var mergeFields = {
+                data_source: "library_test"
+            }
+            iterable(event.target.value).organicSubscribe(mergeFields);
+            */
+
+            /* BROWSE PRODUCTS
+            var product = {
+                id: 'TEST0617',
+                name: 'Library product seventh',
+                price: 700,
+                quantity: 1,
+                brand: 'Library brand seventh',
+                oldPrice: 1400,
+                discount: 50,
+                url: window.location.href,
+                imageUrl: window.location.href+'/image7.png'
+            }
+            iterable(event.target.value).browseProducts(product);
+            */
+
+            /* ADD TO CART
+            var products = [{
+                id: 'TEST0617',
+                name: 'Library product seventh',
+                price: 700,
+                quantity: 1,
+                url: window.location.href,
+                imageUrl: window.location.href+'/image7.png',
+                dataFields: {
+                    brand: 'Library brand seventh',
+                    oldPrice: 1400,
+                    discount: 50
+                }
+            }]
+            iterable(event.target.value).addToCart(products);
+            */
+
+            /* PURCHASE
+            var transactionId = "TEST0001";
+            var products = [{
+                id: 'TEST0617',
+                name: 'Library product seventh',
+                price: 700,
+                quantity: 1,
+                url: window.location.href,
+                imageUrl: window.location.href+'/image7.png',
+                dataFields: {
+                    brand: 'Library brand seventh',
+                    oldPrice: 1400,
+                    discount: 50
+                }
+            }]
+            var totalPrice = 700;
+            iterable(event.target.value).purchase(transactionId,products,totalPrice);
+            */
+        });
+    </script>
+</body>
+</html>
