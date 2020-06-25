@@ -148,7 +148,7 @@ function iterableWebpush(iterableKey) {
 
 
             /*------------- Register service worker and Handling messages -------------------*/
-            navigator.serviceWorker.register('firebase-messaging-sw.js',{ updateViaCache: 'none' })
+            navigator.serviceWorker.register('/firebase-messaging-sw.js',{ updateViaCache: 'none' })
             .then(function(registration) {
             messaging.useServiceWorker(registration);
 
