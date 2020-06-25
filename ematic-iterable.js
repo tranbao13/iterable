@@ -1,5 +1,14 @@
 /*---------------------------OTHER FUNCTIONS-----------------------------*/
-const iterableKey = "83acf9f541b949c78696b99d2eedfc63";
+function getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
+}
+
+if (getCookie('iterableEndUserId')) {
+    localStorage.setItem('realEmail',decodeURIComponent(getCookie('iterableEndUserId')));
+}
+
 function pushToArray(arr, obj) {
     var index = arr.findIndex(function (e) {
       return e.id === obj.id;
@@ -120,13 +129,28 @@ function iterable(userEmail) {
             iterableAPI(iterableKey,"POST","https://api.iterable.com/api/commerce/updateCart",data)
         },
         purchase: (iterableKey,transactionId, products, totalPrice) => {
-            var data = {
-                id: transactionId,
-                user: {
-                    email: userEmail    
-                },
-                items: products,
-                total: totalPrice                
+            var checkCookie = getCookie("iterableEmailCampaignId");
+            if(checkCookie!=="") {
+                var data = {
+                    id: transactionId,
+                    user: {
+                        email: userEmail    
+                    },
+                    items: products,
+                    campaignId:Number(checkCookie),
+                    templateId: Number(getCookie('iterableTemplateId')),
+                    total: totalPrice                
+                }
+            }
+            else {
+                var data = {
+                    id: transactionId,
+                    user: {
+                        email: userEmail    
+                    },
+                    items: products,
+                    total: totalPrice                
+                }
             }
             iterableAPI(iterableKey,"POST","https://api.iterable.com/api/commerce/trackPurchase",data)
         }
