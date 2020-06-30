@@ -130,7 +130,7 @@ function iterable(userEmail) {
         },
         purchase: (iterableKey,transactionId, products, totalPrice) => {
             var checkCookie = getCookie("iterableEmailCampaignId");
-            if(checkCookie!=="") {
+            if(checkCookie!==undefined) {
                 var data = {
                     id: transactionId,
                     user: {
